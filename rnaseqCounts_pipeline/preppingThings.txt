@@ -21,12 +21,12 @@ find . -type l | while read symlink; do
 # DENGUE 80 - QUANT MAPPING
  ./nextflowRun.sh \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/runStats \
-        dengue80Run_01042025_mapQuant_test \
+        dengue80Run_10042025_mapQuant_salmonMapOnly \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/ \
         false \
-        dengue80_all_mappingQuant_test \
+        dengue80Run_all_mapQuant_salmonMapOnly \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/dengue80.config \
-        /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/alignment_quant_Main.nf
+        /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/salmonAlign_redo.nf
 
 # DENGUE 112 - TRIM_QC
  ./nextflowRun.sh \
@@ -41,10 +41,10 @@ find . -type l | while read symlink; do
 # DENGUE 112 - QUANT MAPPING
  ./nextflowRun.sh \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/runStats \
-        dengue112Run_29032025_mapQuant_test \
+        dengue112Run_10042025_mapQuant_salmonOnly \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/ \
         false \
-        dengue112_all_mappingQuant_test \
+        dengue112_all_mappingQuant_salmonOnly \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/dengue112.config \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/alignment_quant_Main.nf
 

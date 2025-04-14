@@ -7,5 +7,5 @@ awk -v RS='>[^\n]+\n' 'length() >= 200 {printf "%s", prt $0} {prt = RT}' /lustre
 seqkit seq -m 200 /lustre/smriti.a/samhita/reference/LNCipedia/lncipedia_5_2.fasta | seqkit stats
 seqkit grep -p "\|lncRNA\|" /lustre/smriti.a/samhita/reference/gencode.v47.transcripts.fa | seqkit seq -m 200 | seqkit stats
 
-awk '/^>/ {p=($0 ~ /lncRNA/)} p' /lustre/smriti.a/samhita/reference/gencode.v47.transcripts.fa | seqkit seq -m 200 | awk '/^>/ {header=$0} /lncRNA/ {print header; print}' | awk -F'|' 'BEGIN {OFS="\t"; print "Transcript_ID", "Gene_ID", "Transcript_Name", "Gene_Name", "Length", "Biotype"}
-           {print substr($1,2), $2, $5, $6, $7, $8}' | less
+awk '/^>/ {p=($0 ~ /lncRNA/)} p' /lustre/smriti.a/samhita/reference/gencode.v47.transcripts.fa | seqkit seq -m 200 | awk '/^>/ {header=$0} /lncRNA/ {print header; print}' | awk 'BEGIN {RS=">"; ORS=""} NR>1 {print ">"$0}' | awk -F'|' 'BEGIN {OFS="\t"; print "Transcript_ID", "Gene_ID", "Transcript_Name", "Gene_Name", "Length", "Biotype"}
+           {split($1, a, "|"); print substr($1,2), $2, $5, $6, $7, $8}' > /lustre/smriti.a/samhita/reference/lncRNA_ids.txt

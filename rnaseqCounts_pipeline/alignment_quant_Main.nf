@@ -32,16 +32,16 @@ workflow {
     //FASTQC_POST    (TRIM.out.trimOutput.map {id,R1,R2 -> tuple(id, [R1, R2], "postTrim")})
     main:
 
-        //SALMON_MAP     (trimmedReadPairs, params.salmon_index)
+        SALMON_MAP     (trimmedReadPairs, params.salmon_index)
 
-        STAR_GENCODE   (trimmedReadPairs, params.star_index_gencode)
+        //STAR_GENCODE   (trimmedReadPairs, params.star_index_gencode)
 
-        SALMON_ALIGN   (STAR_GENCODE.out.id, STAR_GENCODE.out.transcriptomeBAM, params.transcriptome_ref)
+        //SALMON_ALIGN   (STAR_GENCODE.out.id, STAR_GENCODE.out.transcriptomeBAM, params.transcriptome_ref)
         
-        MULTI_QC       (STAR_GENCODE.out.starLog
-                        .collect())
+        //MULTI_QC       (STAR_GENCODE.out.starLog
+          //              .collect())
 
-        FILE_CLEANUP   (STAR_GENCODE.out.transcriptomeBAM, STAR_GENCODE.out.starLog, STAR_GENCODE.out.id,MULTI_QC.out.multiqc,SALMON_ALIGN.out.salmonAlignOutput)
+        //FILE_CLEANUP   (STAR_GENCODE.out.transcriptomeBAM, STAR_GENCODE.out.starLog, STAR_GENCODE.out.id,MULTI_QC.out.multiqc,SALMON_ALIGN.out.salmonAlignOutput)
 
 }
 
