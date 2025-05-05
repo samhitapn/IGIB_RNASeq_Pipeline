@@ -41,10 +41,10 @@ find . -type l | while read symlink; do
 # DENGUE 112 - QUANT MAPPING
  ./nextflowRun.sh \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/runStats \
-        dengue112Run_10042025_mapQuant_salmonOnly \
+        dengue112Run_24042025_mapQuant_51_112 \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/ \
         false \
-        dengue112_all_mappingQuant_salmonOnly \
+        dengue112_all_mappingQuant_51_112 \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/dengue112.config \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/alignment_quant_Main.nf
 

@@ -7,7 +7,7 @@ process FILE_CLEANUP {
     path transcriptomeBAM
     path starlog
     val sample_id
-    path multiqc
+    //path multiqc
     path salmon
 
     publishDir "${params.outDir}/${sample_id}/star_gencode", mode: 'copy'
