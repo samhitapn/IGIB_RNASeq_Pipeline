@@ -3,7 +3,7 @@
 // Process : FastQC of all the processes
 process FASTQC {
     tag "${sample_id}_${stage}"
-    publishDir "${params.outDir}/${sample_id}/fastqc/${sample_id}_${stage}", mode: 'symlink'
+    publishDir "${params.outDir}/${sample_id}/fastqc/${sample_id}_${stage}", mode: 'copy'
 
     input: 
     tuple val(sample_id), path(reads), val(stage)

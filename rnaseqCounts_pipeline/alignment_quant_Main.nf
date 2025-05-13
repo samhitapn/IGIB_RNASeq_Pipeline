@@ -11,13 +11,9 @@ if (!outDir.exists()) {
 
 //CREATING A CHANNEL OF PE FILES
 trimmedReadPairs = Channel.fromFilePairs(params.trimmedReadsDir, flat: false)
-                          //.collect()
-                          .toList()
-                          /*.enumerate()
-                          .filter { index, tuple -> index >= 4 && index <= 8 }
-                          .map { index, tuple -> tuple }*/
+                          /*.toList()
                           .map { list -> list[86,89,105] } 
-                          .flatMap { tuple -> tuple }
+                          .flatMap { tuple -> tuple }*/
 
                           
                          
@@ -28,11 +24,11 @@ trimmedReadPairs = Channel.fromFilePairs(params.trimmedReadsDir, flat: false)
 //include { FASTQC } from './processes/fastqc.nf'
 //include { FASTQC as FASTQC_POST } from './processes/fastqc.nf'
 //include { TRIM } from './processes/trimmomatic.nf'
-include { SALMON_MAP } from './processes/salmon_mappingMode.nf'
-include { STAR_GENCODE } from './processes/star_gencode_alignment.nf'
-include { SALMON_ALIGN } from './processes/salmon_alignmentMode.nf'
-include { MULTI_QC } from './processes/multiqc.nf'
-include { FILE_CLEANUP } from './processes/fileCleanup_star.nf'
+include { SALMON_MAP_KD } from './processes/salmon_mappingMode_keepDuplicates.nf'
+//include { STAR_GENCODE } from './processes/star_gencode_alignment.nf'
+//include { SALMON_ALIGN } from './processes/salmon_alignmentMode.nf'
+//include { MULTI_QC } from './processes/multiqc.nf'
+//include { FILE_CLEANUP } from './processes/fileCleanup_star.nf'
 
 // ALL WORKFLOW -> WF_ALL
 workflow {
@@ -46,13 +42,15 @@ workflow {
 
         //SALMON_MAP     (trimmedReadPairs, params.salmon_index)
 
-        STAR_GENCODE   (trimmedReadPairs, params.star_index_gencode)
+        SALMON_MAP_KD     (trimmedReadPairs, params.salmon_index)
 
-        SALMON_ALIGN   (STAR_GENCODE.out.id, STAR_GENCODE.out.transcriptomeBAM, params.transcriptome_ref)
+        //STAR_GENCODE   (trimmedReadPairs, params.star_index_gencode)
+
+        //SALMON_ALIGN   (STAR_GENCODE.out.id, STAR_GENCODE.out.transcriptomeBAM, params.transcriptome_ref)
         
         //MULTI_QC       (STAR_GENCODE.out.starLog
           //              .collect())
 
-        FILE_CLEANUP   (STAR_GENCODE.out.transcriptomeBAM, STAR_GENCODE.out.starLog, STAR_GENCODE.out.id,SALMON_ALIGN.out.salmonAlignOutput)
+        //FILE_CLEANUP   (STAR_GENCODE.out.transcriptomeBAM, STAR_GENCODE.out.starLog, STAR_GENCODE.out.id,SALMON_ALIGN.out.salmonAlignOutput)
 
 }

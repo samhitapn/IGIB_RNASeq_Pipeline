@@ -10,6 +10,8 @@ process STAR_GENCODE {
     publishDir "${params.outDir}/${sample_id}/star_gencode", pattern: "*_Unmapped.out.mate2", mode: 'move'
     publishDir "${params.outDir}/${sample_id}/star_gencode", pattern: "*__starGENOME/*", mode: 'move'
     publishDir "${params.outDir}/${sample_id}/star_gencode", pattern: "*__starpass1/*", mode: 'move'
+    publishDir "${params.outDir}/${sample_id}/star_gencode", pattern: "*_Aligned.toTranscriptome.out.bam", mode: 'move'
+    publishDir "${params.outDir}/${sample_id}/star_gencode", pattern: "*_Log.final.out", mode: 'move'
     //publishDir "${params.outDir}/${sample_id}/star_gencode", pattern "*_Aligned.toTranscriptome.out.bam", mode: 'move', when: { !workflow.onComplete }
     //publishDir "${params.outDir}/${sample_id}/star_gencode", pattern "*_Log.final.out", mode: 'move', when: { !workflow.onComplete }*/
 

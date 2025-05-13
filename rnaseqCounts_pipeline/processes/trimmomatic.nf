@@ -3,7 +3,7 @@
 // Process 2 : TRIM THE ADAPTER SEQUNENCES AND LOW QUALITY READS
 process TRIM {
     tag "$sample_id"
-    publishDir "${params.outDir}/${sample_id}/trimmomatic", mode: 'symlink'
+    publishDir "${params.outDir}/${sample_id}/trimmomatic", mode: 'copy'
 
     input: 
     tuple val(sample_id), path(reads)

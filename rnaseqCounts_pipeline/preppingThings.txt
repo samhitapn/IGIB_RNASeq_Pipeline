@@ -21,12 +21,12 @@ find . -type l | while read symlink; do
 # DENGUE 80 - QUANT MAPPING
  ./nextflowRun.sh \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/runStats \
-        dengue80Run_10042025_mapQuant_salmonMapOnly \
+        dengue80Run_06May2025_salmonMap_kd \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/ \
         false \
-        dengue80Run_all_mapQuant_salmonMapOnly \
+        dengue80Run_06May2025_salmonMap_kd \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/dengue80.config \
-        /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/salmonAlign_redo.nf
+        /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/alignment_quant_Main.nf
 
 # DENGUE 112 - TRIM_QC
  ./nextflowRun.sh \
@@ -47,4 +47,13 @@ find . -type l | while read symlink; do
         dengue112_all_mappingQuant_51_112 \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/dengue112.config \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/alignment_quant_Main.nf
+
+#Radhika samples
+./nextflowRun.sh \
+        /lustre/smriti.a/samhita/Radhika_diabetes_mice_cellLines/src/runStats \
+        radhika_13May2025_star \
+        false \
+        trim_fastqc_13May2025 \
+        /lustre/smriti.a/samhita/Radhika_diabetes_mice_cellLines/src/radhikaAnalysis.config \
+        /lustre/smriti.a/samhita/Radhika_diabetes_mice_cellLines/src/trim_postTrim_fastqc.nf
 
