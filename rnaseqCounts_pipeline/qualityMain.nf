@@ -14,6 +14,7 @@ dengue_classification = Channel.fromPath(params.dengue)
        .splitCsv( header: ['col0','col1','col2'], skip: 1 )
        .map(row -> tuple(row.col0,"${row.col0}_${row.col1}_${row.col2}"))
        
+//dengue_classification.view()       
 
 rawReadPairs = Channel.fromFilePairs(params.readsDir)
         .map{id, reads -> 
@@ -23,18 +24,20 @@ rawReadPairs = Channel.fromFilePairs(params.readsDir)
         .join(dengue_classification)
         .map{ id_1, reads, id_new -> tuple(id_new, reads)}
 
+rawReadPairs.view()
+
 // INCLUDE THE PROCESSES
 include { FASTQC } from './processes/fastqc.nf'
 include { FASTQC as FASTQC_POST } from './processes/fastqc.nf'
 include { TRIM } from './processes/trimmomatic.nf'
-/**include { SALMON_MAP } from './processes/salmon_mappingMode.nf'
+/*include { SALMON_MAP } from './processes/salmon_mappingMode.nf'
 include { STAR_GENCODE } from './processes/star_gencode_alignment.nf'
 include { SALMON_ALIGN } from './processes/salmon_alignmentMode.nf'*/
-include { MULTI_QC } from './processes/multiqc.nf'
-include { FILE_TRANSFER } from './processes/fileTransfer.nf'
+//include { MULTI_QC } from './processes/multiqc.nf'
+// /include { FILE_TRANSFER } from './processes/fileTransfer.nf'
 
 // ALL WORKFLOW -> WF_ALL
-workflow {
+ workflow {
     
     FASTQC         (rawReadPairs.map { id, reads -> tuple(id, reads, "preTrim") })  
     
@@ -49,7 +52,7 @@ workflow {
     //SALMON_ALIGN   (STAR_GENCODE.out.id, STAR_GENCODE.out.transcriptomeBAM, params.transcriptome_ref)
 
   
-    MULTI_QC       (FASTQC_POST.out.zip
+    /*MULTI_QC       (FASTQC_POST.out.zip
                      .mix(FASTQC_POST.out.html)
                      .collect())
 
@@ -58,7 +61,7 @@ workflow {
                      FASTQC_POST.out.html,FASTQC_POST.out.zip,
                      MULTI_QC.out.multiqc)
                      .collect()      
-    FILE_TRANSFER   (allOutput)
+    FILE_TRANSFER   (allOutput)*/
     
 }
 

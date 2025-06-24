@@ -1,0 +1,4 @@
+task_id	hash	native_id	name	status	exit	submit	duration	realtime	%cpu	peak_rss	peak_vmem	rchar	wchar
+1	56/d6b16c	266150	STAR_GENCODE (DEN0084_Aviti_Non-Severe)	COMPLETED	0	2025-04-01 16:35:40.742	15m 41s	15m 41s	1441.6%	41.6 GB	44.7 GB	53.9 GB	14.8 GB
+3	b9/29f687	287961	MULTI_QC	COMPLETED	0	2025-04-01 16:51:21.854	38.7s	38.4s	10.8%	133.6 MB	610.3 MB	48.6 MB	17.4 MB
+2	b1/9c32ba	287956	SALMON_ALIGN (DEN0084_Aviti_Non-Severe)	COMPLETED	0	2025-04-01 16:51:21.801	1m 30s	1m 30s	798.9%	9.4 GB	11.1 GB	1.9 GB	18.5 MB

@@ -37,11 +37,12 @@ process STAR_GENCODE {
         --runThreadN ${task.cpus} \
         --genomeDir ${star_index_gencode} \
         --readFilesIn ${trimmedReads[0]} ${trimmedReads[1]} \
-        --outFileNamePrefix ./${sample_id}_ \
+        --outFileNamePrefix ./${sample_id}_${params.mmNum}_ \
         --outSAMtype BAM SortedByCoordinate \
         --outReadsUnmapped Fastx \
         --twopassMode Basic \
         --quantMode TranscriptomeSAM \
-        --readFilesCommand zcat
+        --readFilesCommand zcat \
+        --outFilterMultimapNmax ${params.mmNum}
     """
 }

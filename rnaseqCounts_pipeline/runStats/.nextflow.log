@@ -1,0 +1,80 @@
+Jun-24 08:56:43.047 [main] DEBUG nextflow.cli.Launcher - $> nextflow run /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/multiqc_all_112.nf -c /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/dengue112.config -w /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/work -with-trace /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/runStats/dengue112Run_22June2025_star_1000_multiqc/trace.txt -with-timeline /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/runStats/dengue112Run_22June2025_star_1000_multiqc/timeline.html -with-report /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/runStats/dengue112Run_22June2025_star_1000_multiqc/report.html --runName dengue112Run_22June2025_star_1000_multiqc
+Jun-24 08:56:43.221 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.10.5
+Jun-24 08:56:43.239 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/smriti.a/.nextflow/plugins; core-plugins: nf-amazon@2.9.2,nf-azure@1.10.2,nf-cloudcache@0.4.2,nf-codecommit@0.2.2,nf-console@1.1.4,nf-google@1.15.4,nf-tower@1.9.3,nf-wave@1.7.4
+Jun-24 08:56:43.261 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jun-24 08:56:43.262 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jun-24 08:56:43.265 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Jun-24 08:56:43.320 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jun-24 08:56:43.348 [main] DEBUG nextflow.config.ConfigBuilder - User config file: /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/dengue112.config
+Jun-24 08:56:43.350 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/dengue112.config
+Jun-24 08:56:43.375 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/smriti.a/.nextflow/secrets/store.json
+Jun-24 08:56:43.378 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@907f2b7] - activable => nextflow.secret.LocalSecretsProvider@907f2b7
+Jun-24 08:56:43.390 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jun-24 08:56:43.871 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jun-24 08:56:43.887 [main] DEBUG nextflow.cli.CmdRun - Launching `/lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/multiqc_all_112.nf` [hopeful_nobel] DSL2 - revision: a9bff42378
+Jun-24 08:56:43.888 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jun-24 08:56:43.889 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jun-24 08:56:43.957 [main] DEBUG nextflow.Session - Session UUID: 455dc130-3800-4587-9e70-584b18ee516c
+Jun-24 08:56:43.957 [main] DEBUG nextflow.Session - Run name: hopeful_nobel
+Jun-24 08:56:43.958 [main] DEBUG nextflow.Session - Executor pool size: 40
+Jun-24 08:56:43.967 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jun-24 08:56:43.973 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=120; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jun-24 08:56:43.998 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.10.5 build 5935
+  Created: 04-03-2025 17:55 UTC (23:25 IDT)
+  System: Linux 3.10.0-1062.el7.x86_64
+  Runtime: Groovy 4.0.23 on OpenJDK 64-Bit Server VM 17.0.10+7
+  Encoding: UTF-8 (UTF-8)
+  Process: 194204@hn1.dc [192.168.28.10]
+  CPUs: 40 - Mem: 377.4 GB (12.1 GB) - Swap: 64 GB (53.2 GB)
+Jun-24 08:56:44.027 [main] DEBUG nextflow.Session - Work-dir: /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/work [lustre]
+Jun-24 08:56:44.027 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/bin
+Jun-24 08:56:44.038 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jun-24 08:56:44.047 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jun-24 08:56:44.087 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jun-24 08:56:44.097 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 41; maxThreads: 1000
+Jun-24 08:56:44.297 [main] DEBUG nextflow.Session - Session start
+Jun-24 08:56:44.304 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/runStats/dengue112Run_22June2025_star_1000_multiqc/trace.txt
+Jun-24 08:56:44.562 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jun-24 08:56:44.811 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MULTI_QC` matches process MULTI_QC
+Jun-24 08:56:44.822 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-24 08:56:44.822 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-24 08:56:44.832 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Jun-24 08:56:44.838 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Jun-24 08:56:44.840 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Jun-24 08:56:44.843 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Jun-24 08:56:44.899 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: MULTI_QC
+Jun-24 08:56:44.912 [main] WARN  nextflow.Session - There's no process matching config selector: FASTQC*
+Jun-24 08:56:44.914 [main] WARN  nextflow.Session - There's no process matching config selector: TRIM
+Jun-24 08:56:44.914 [main] WARN  nextflow.Session - There's no process matching config selector: SALMON_MAP
+Jun-24 08:56:44.914 [main] WARN  nextflow.Session - There's no process matching config selector: SALMON_ALIGN
+Jun-24 08:56:44.914 [main] WARN  nextflow.Session - There's no process matching config selector: STAR_GENCODE
+Jun-24 08:56:44.914 [main] DEBUG nextflow.Session - Igniting dataflow network (6)
+Jun-24 08:56:44.926 [PathVisitor-2] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /lustre/smriti.a/samhita/results_dengue_112/; pattern: **/fastqc/*_postTrim/*; options: [:]
+Jun-24 08:56:44.926 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /lustre/smriti.a/samhita/results_dengue_112/; pattern: **/fastqc/*_preTrim/*; options: [:]
+Jun-24 08:56:44.928 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MULTI_QC
+Jun-24 08:56:44.927 [PathVisitor-3] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /lustre/smriti.a/samhita/results_dengue_112/; pattern: **/salmon_map/*_salmon_quant_mappingMode; options: [type:dir]
+Jun-24 08:56:44.928 [PathVisitor-4] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /lustre/smriti.a/samhita/results_dengue_112/; pattern: **/salmon_align/*_salmon_quant_alignmentMode; options: [type:dir]
+Jun-24 08:56:44.928 [PathVisitor-5] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /lustre/smriti.a/samhita/results_dengue_112/; pattern: **/star_gencode/*_1000_Log.final.out; options: [:]
+Jun-24 08:56:44.930 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_604b44a127e564e2: /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/processes/multiqc_process.nf
+  Script_5289a268f7bb6683: /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/multiqc_all_112.nf
+Jun-24 08:56:44.930 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jun-24 08:56:44.930 [main] DEBUG nextflow.Session - Session await
+Jun-24 08:56:49.470 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MULTI_QC > jobId: 40613; workDir: /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/work/c3/9f27685aad7ad4cd099c6755e78d49
+Jun-24 08:56:49.471 [Task submitter] INFO  nextflow.Session - [c3/9f2768] Submitted process > MULTI_QC
+Jun-24 08:59:04.871 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 40613; id: 1; name: MULTI_QC; status: COMPLETED; exit: 0; error: -; workDir: /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/work/c3/9f27685aad7ad4cd099c6755e78d49 started: 1750735609853; exited: 2025-06-24T03:29:00Z; ]
+Jun-24 08:59:04.874 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=120; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jun-24 08:59:04.919 [TaskFinalizer-1] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=120; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Jun-24 08:59:04.928 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jun-24 08:59:09.865 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Jun-24 08:59:09.866 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jun-24 08:59:09.875 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Jun-24 08:59:09.876 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Jun-24 08:59:09.885 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=1; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=2m 10s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=1; peakMemory=4 GB; ]
+Jun-24 08:59:09.885 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Jun-24 08:59:09.887 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Jun-24 08:59:10.432 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+Jun-24 08:59:10.587 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jun-24 08:59:10.688 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Jun-24 08:59:10.689 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

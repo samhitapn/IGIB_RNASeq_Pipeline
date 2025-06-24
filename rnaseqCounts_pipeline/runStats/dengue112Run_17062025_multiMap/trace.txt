@@ -1,0 +1,2 @@
+task_id	hash	native_id	name	status	exit	submit	duration	realtime	%cpu	peak_rss	peak_vmem	rchar	wchar
+1	fa/136027	30803	MULTI_MAP_STATS (1)	FAILED	2	2025-06-17 11:14:34.916	19.6s	15s	-	-	-	-	-

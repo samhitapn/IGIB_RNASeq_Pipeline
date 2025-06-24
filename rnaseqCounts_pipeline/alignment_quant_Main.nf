@@ -11,9 +11,25 @@ if (!outDir.exists()) {
 
 //CREATING A CHANNEL OF PE FILES
 trimmedReadPairs = Channel.fromFilePairs(params.trimmedReadsDir, flat: false)
+                          .view()
                           /*.toList()
                           .map { list -> list[86,89,105] } 
                           .flatMap { tuple -> tuple }*/
+
+/*transcriptomeBAM = Channel.fromPath(params.starBAM_transcriptome)
+                          .map { file -> 
+                                def sampleId = file.getParent().getParent().getName() // gets the sample folder name
+                                return [sampleId, file]
+                              }
+                          
+transcriptomeBAM
+        .map { id, transcriptomeBAM -> id }
+        .set { sampleID }
+
+transcriptomeBAM
+        .map { id, transcriptomeBAM -> transcriptomeBAM  }
+        .set { BAM } 
+//BAM.view()*/             
 
                           
                          
@@ -24,7 +40,7 @@ trimmedReadPairs = Channel.fromFilePairs(params.trimmedReadsDir, flat: false)
 //include { FASTQC } from './processes/fastqc.nf'
 //include { FASTQC as FASTQC_POST } from './processes/fastqc.nf'
 //include { TRIM } from './processes/trimmomatic.nf'
-include { SALMON_MAP_KD } from './processes/salmon_mappingMode_keepDuplicates.nf'
+include { SALMON_MAP } from './processes/salmon_mappingMode.nf'
 //include { STAR_GENCODE } from './processes/star_gencode_alignment.nf'
 //include { SALMON_ALIGN } from './processes/salmon_alignmentMode.nf'
 //include { MULTI_QC } from './processes/multiqc.nf'
@@ -40,13 +56,14 @@ workflow {
     //FASTQC_POST    (TRIM.out.trimOutput.map {id,R1,R2 -> tuple(id, [R1, R2], "postTrim")})
     main:
 
-        //SALMON_MAP     (trimmedReadPairs, params.salmon_index)
+        SALMON_MAP     (trimmedReadPairs, params.salmon_index)
 
-        SALMON_MAP_KD     (trimmedReadPairs, params.salmon_index)
+        //SALMON_MAP_KD     (trimmedReadPairs, params.salmon_index)
 
         //STAR_GENCODE   (trimmedReadPairs, params.star_index_gencode)
 
-        //SALMON_ALIGN   (STAR_GENCODE.out.id, STAR_GENCODE.out.transcriptomeBAM, params.transcriptome_ref)
+        //#SALMON_ALIGN   (STAR_GENCODE.out.id, STAR_GENCODE.out.transcriptomeBAM, params.transcriptome_ref)
+        //SALMON_ALIGN   (sampleID, BAM, params.transcriptome_ref)
         
         //MULTI_QC       (STAR_GENCODE.out.starLog
           //              .collect())

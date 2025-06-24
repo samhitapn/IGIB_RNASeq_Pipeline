@@ -1,0 +1,3 @@
+task_id	hash	native_id	name	status	exit	submit	duration	realtime	%cpu	peak_rss	peak_vmem	rchar	wchar
+19	78/89c713	2271	STAR_GENCODE (IGIB1130630558_Severe_M)	ABORTED	-	2025-04-28 13:22:02.544	-	-	-	-	-	-	-
+5	24/a6b2f3	2289	STAR_GENCODE (IGIB113002385876_Mild_M)	ABORTED	-	2025-04-28 13:22:02.652	-	-	-	-	-	-	-

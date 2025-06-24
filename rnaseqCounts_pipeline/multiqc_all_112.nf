@@ -21,19 +21,19 @@ salmonMapResults = Channel.fromPath("/lustre/smriti.a/samhita/results_dengue_112
 salmonAlignResults = Channel.fromPath("/lustre/smriti.a/samhita/results_dengue_112/**/salmon_align/*_salmon_quant_alignmentMode/",type: 'dir')
                           .collect()
 
-starResults = Channel.fromPath("/lustre/smriti.a/samhita/results_dengue_112/**/star_gencode/*_Log.final.out")
+starResults = Channel.fromPath("/lustre/smriti.a/samhita/results_dengue_112/**/star_gencode/*_1000_Log.final.out")
                      .collect()
 
 //                    fastqcResults_preTrim.concat(salmonMapResults).concat(fastqcResults_postTrim).concat(starResults).collect().view()
 
 
 // INCLUDE THE PROCESSES
-include { MULTI_QC } from './processes/multiqc.nf'
+include { MULTI_QC } from '/lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/processes/multiqc_process.nf'
 
 
 // ALL WORKFLOW -> WF_ALL
 workflow {
     
-    MULTI_QC       (salmonAlignResults)
+    MULTI_QC       (starResults)
 }
 

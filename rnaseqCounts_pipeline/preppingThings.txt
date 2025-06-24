@@ -21,10 +21,9 @@ find . -type l | while read symlink; do
 # DENGUE 80 - QUANT MAPPING
  ./nextflowRun.sh \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/runStats \
-        dengue80Run_06May2025_salmonMap_kd \
-        /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/ \
+        dengue80Run_20June2025_extraSamples_salmonMap \
         false \
-        dengue80Run_06May2025_salmonMap_kd \
+        dengue80Run_20June2025_extraSamples_salmonMap \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/dengue80.config \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/alignment_quant_Main.nf
 
@@ -32,28 +31,60 @@ find . -type l | while read symlink; do
  ./nextflowRun.sh \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/runStats \
         dengue112Run_29032025_quality \
-        /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/ \
         false \
         dengue112Run_all_trimAdapter_2_20_5 \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/dengue112.config \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/qualityMain.nf
 
-# DENGUE 112 - QUANT MAPPING
+# DENGUE 112
  ./nextflowRun.sh \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/runStats \
-        dengue112Run_24042025_mapQuant_51_112 \
-        /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/ \
+        dengue112Run_22June2025_star_1000_multiqc \
         false \
-        dengue112_all_mappingQuant_51_112 \
+        dengue112Run_22June2025_star_1000_multiqc \
         /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/dengue112.config \
-        /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/alignment_quant_Main.nf
+        /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/multiqc_all_112.nf \
+        /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/work
+
+        /lustre/smriti.a/samhita/src/rnaseqCounts_pipeline/dengue112Run_04062025_fcHERV.log
 
 #Radhika samples
 ./nextflowRun.sh \
         /lustre/smriti.a/samhita/Radhika_diabetes_mice_cellLines/src/runStats \
-        radhika_13May2025_star \
+        radhika_20May2025_multiqc_preTrim \
         false \
-        trim_fastqc_13May2025 \
+        multiqc_15May2025_star \
         /lustre/smriti.a/samhita/Radhika_diabetes_mice_cellLines/src/radhikaAnalysis.config \
-        /lustre/smriti.a/samhita/Radhika_diabetes_mice_cellLines/src/trim_postTrim_fastqc.nf
+        /lustre/smriti.a/samhita/Radhika_diabetes_mice_cellLines/src/multiqc_call.nf
 
+./nextflowRun.sh \
+        /lustre/smriti.a/samhita/Radhika_diabetes_mice_cellLines/src/runStats \
+        radhika_30May2025_featureCount \
+        false \
+        multiqc_30May2025_featureCount \
+        /lustre/smriti.a/samhita/Radhika_diabetes_mice_cellLines/src/radhikaAnalysis.config \
+        /lustre/smriti.a/samhita/Radhika_diabetes_mice_cellLines/src/featureCounts_call.nf
+
+
+############ Old school while loop
+while IFS= read -r sample; do
+    sample_name=$(basename "$sample" .txt)
+    echo ${sample}
+
+    sbatch <<EOF
+#!/bin/bash
+#SBATCH --job-name=run_$sample_name
+#SBATCH --output=/lustre/smriti.a/samhita/results_dengue_112/multimappingStats/logs/${sample_name}.out
+#SBATCH --error=/lustre/smriti.a/samhita/results_dengue_112/multimappingStats/logs/${sample_name}.err
+#SBATCH --time=01:00:00
+#SBATCH --mem=4G
+#SBATCH --partition=compute,smp,newcompute
+
+source /home/smriti.a/anaconda3/etc/profile.d/conda.sh
+conda activate R_m6a_all
+Rscript /lustre/smriti.a/samhita/src/multimapAnalysis_1.r "$sample"
+conda deactivate
+EOF
+
+
+done < /lustre/smriti.a/samhita/results_dengue_112/dengue112_bamFilePaths.txt
